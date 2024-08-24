@@ -9,12 +9,17 @@ jobs:
     if: github.actor != 'github-actions[bot]' # Ensure that the action isn't triggered by the bot itself
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+
       - name: Run the Node.js action to replace keywords
-        uses: ./src
+        uses: ./src  # This points to your custom action defined in /src
+        with:
+          comment-body: "${{ github.event.comment.body }}"
 
       - name: Update the Comment
         uses: peter-evans/create-or-update-comment@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ github.event.comment.id }}
-          body: ${{ steps.replace-keywords.outputs.updated_body }}
+          body: ${{ steps.replace-keywords.outputs.updated-body }}
