@@ -12,6 +12,16 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install Node.js dependencies
+        run: |
+          npm install
+        working-directory: ./
+
       - name: Run the Node.js action to replace keywords
         uses: ./src  # This points to your custom action defined in /src
         with:
