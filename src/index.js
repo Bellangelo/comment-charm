@@ -10,7 +10,7 @@ async function run() {
         let commentBody = github.context.payload.comment.body;
 
         Object.keys(keywords).forEach((key) => {
-            commentBody = commentBody.replace(new RegExp(key, 'g'), function (match) {
+            commentBody = commentBody.replace(new RegExp(':' + key + ':', 'g'), function (match) {
                 const items = keywords[key];
                 return items[Math.floor(Math.random()*items.length)];
             });
