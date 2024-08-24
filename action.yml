@@ -17,4 +17,4 @@ outputs:
     description: 'The updated comment body with keywords replaced.'
 runs:
   using: 'node20'
-  main: 'index.js'
+  main: 'src/index.js'
