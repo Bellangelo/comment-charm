@@ -24,10 +24,9 @@ jobs:
 
       - name: Run the Node.js action to replace keywords
         id: replace-keywords
-        uses: ./src  # This points to your custom action defined in /src
+        uses: ./src
         with:
           comment-body: "${{ github.event.comment.body }}"
-          language: 'el-christmas'
 
       - name: Update the Comment
         uses: peter-evans/create-or-update-comment@v2
