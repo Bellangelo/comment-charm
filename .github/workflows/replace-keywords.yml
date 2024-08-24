@@ -1,0 +1,34 @@
+name: Replace Keywords with Compliments and Insults
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  replace-keywords:
+    if: github.actor != 'github-actions[bot]' # Ensure that the action isn't triggered by the bot itself
+    runs-on: ubuntu-latest
+    steps:
+      - name: Replace Keywords in Comment
+        id: replace_keywords
+        run: |
+          # Extract the original comment body
+          COMMENT_BODY="${{ github.event.comment.body }}"
+
+          # Check if the comment contains the keywords :compliment: or :insult:
+          if echo "$COMMENT_BODY" | grep -qE ":compliment:|:insult:"; then
+            # Replace :compliment: and :insult: with their respective phrases
+            UPDATED_COMMENT_BODY=$(echo "$COMMENT_BODY" | sed 's/:compliment:/[ a nice compliment ]/g' | sed 's/:insult:/[ a bad insult ]/g')
+            echo "::set-output name=should_update::true"
+            echo "::set-output name=updated_body::$UPDATED_COMMENT_BODY"
+          else
+            echo "::set-output name=should_update::false"
+          fi
+
+      - name: Update the Comment
+        if: steps.replace_keywords.outputs.should_update == 'true'
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ github.event.comment.id }}
+          body: ${{ steps.replace_keywords.outputs.updated_body }}
