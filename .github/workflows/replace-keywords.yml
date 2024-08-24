@@ -17,10 +17,15 @@ jobs:
 
           # Check if the comment contains the keywords :compliment: or :insult:
           if echo "$COMMENT_BODY" | grep -qE ":compliment:|:insult:"; then
+            # Extract the original comment body with new lines intact
+            COMMENT_BODY="${{ github.event.comment.body }}"
+  
             # Replace :compliment: and :insult: with their respective phrases
-            UPDATED_COMMENT_BODY=$(printf "%s" "$COMMENT_BODY" | sed 's/:compliment:/[ a nice compliment ]/g' | sed 's/:insult:/[ a bad insult ]/g')
-            echo "::set-output name=should_update::true"
-            echo "::set-output name=updated_body::$UPDATED_COMMENT_BODY"
+            UPDATED_COMMENT_BODY=$(sed 's/:compliment:/[ a nice compliment ]/g' <<< "$COMMENT_BODY" | sed 's/:insult:/[ a bad insult ]/g')
+  
+            # Write the updated comment body to the environment file to preserve new lines
+            echo "$UPDATED_COMMENT_BODY" > updated_comment_body.txt
+            cat updated_comment_body.txt >> $GITHUB_ENV
           else
             echo "::set-output name=should_update::false"
           fi
