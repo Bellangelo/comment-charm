@@ -34,3 +34,5 @@ class Replacer {
         return commentBody;
     }
 }
+
+module.exports = Replacer;
