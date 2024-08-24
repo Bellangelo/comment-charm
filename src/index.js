@@ -5,7 +5,7 @@ const fs = require('fs');
 async function run() {
     try {
         const language = 'en';
-        const keywords = JSON.parse(fs.readFileSync('./keywords/' + language + '.json', 'utf8'));
+        const keywords = JSON.parse(fs.readFileSync(__dirname + '/keywords/' + language + '.json', 'utf8'));
 
         let commentBody = github.context.payload.comment.body;
 
