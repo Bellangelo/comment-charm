@@ -7,7 +7,9 @@ on:
   workflow_dispatch: {}
 
 permissions:
+  issues: write
   pull-requests: write
+  contents: write
 
 jobs:
   build:
