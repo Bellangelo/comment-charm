@@ -18,7 +18,7 @@ class Replacer {
     }
 
     #getKeywords() {
-        return JSON.parse(fs.readFileSync(this.#keywordsFile(), 'utf8'));
+        return JSON.parse(fs.readFileSync(this.#keywordsFile, 'utf8'));
     }
 
     replace(commentBody) {
