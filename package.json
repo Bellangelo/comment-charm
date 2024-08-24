@@ -2,6 +2,7 @@
   "name": "replace-keywords-action",
   "version": "0.0.1",
   "description": "A GitHub Action to replace :compliment: and :insult: in comments",
+  "author": "Aggelos Bellos",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
