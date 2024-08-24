@@ -3,6 +3,8 @@ Transform your PR comments with magical compliments and cheeky insults using Git
 
 ## 🚀 Overview
 Comment Charm is a GitHub workflow that adds a fun element to your pull requests by automatically generating witty compliments or playful insults for comments. It's a great way to make the code review process more lighthearted and engaging.
+After adding a workflow, just create a comment in any of your PRs using a keyword.
+For example, `Great first PR! :compliment:` could be transformed into `Great first PR! You are making code reviews feel like a walk in the park.`.
 
 ## ✨ Features
 - Automatically triggers on PR events.
