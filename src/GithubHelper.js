@@ -5,7 +5,7 @@ export default class {
   #oktokit
 
   constructor(githubToken) {
-    this.#oktokit = github.getOktokit(githubToken)
+    this.#oktokit = github.getOctokit(githubToken)
   }
 
   async updateComment(owner, repo, commentId, commentBody) {
