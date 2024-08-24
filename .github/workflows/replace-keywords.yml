@@ -31,4 +31,4 @@ jobs:
         with:
           comment-id: ${{ github.event.comment.id }}
           body: ${{ steps.replace_keywords.outputs.updated_body }}
-          mode: replace
+          edit-mode: replace
