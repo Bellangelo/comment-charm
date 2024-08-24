@@ -18,7 +18,7 @@ jobs:
           # Check if the comment contains the keywords :compliment: or :insult:
           if echo "$COMMENT_BODY" | grep -qE ":compliment:|:insult:"; then
             # Replace :compliment: and :insult: with their respective phrases
-            UPDATED_COMMENT_BODY=$(echo "$COMMENT_BODY" | sed 's/:compliment:/[ a nice compliment ]/g' | sed 's/:insult:/[ a bad insult ]/g')
+            UPDATED_COMMENT_BODY=$(printf "%s" "$COMMENT_BODY" | sed 's/:compliment:/[ a nice compliment ]/g' | sed 's/:insult:/[ a bad insult ]/g')
             echo "::set-output name=should_update::true"
             echo "::set-output name=updated_body::$UPDATED_COMMENT_BODY"
           else
