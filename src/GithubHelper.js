@@ -18,7 +18,7 @@ export default class {
    * @param {string} commentBody
    */
   async updateComment(repository, commentId, commentBody) {
-    const [owner, repo] = repository.split('/');
+    const [owner, repo] = repository.split('/')
 
     await this.#oktokit.rest.issues.updateComment({
       owner,
