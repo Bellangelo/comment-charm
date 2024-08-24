@@ -4,6 +4,9 @@ inputs:
   comment-body:
     description: 'The body of the comment to process.'
     required: true
+  comment-id:
+    description: 'The id of the comment to update.'
+    required: true
   language:
     description: 'The language to use for the custom text.'
     default: 'en'
@@ -15,11 +18,11 @@ inputs:
   token:
     description: 'GITHUB_TOKEN or a repo scoped PAT.'
     default: ${{ github.token }}
+    required: false
   repository:
     description: 'The full name of the repository in which to create or update a comment.'
     default: ${{ github.repository }}
-  comment-id:
-    description: 'The id of the comment to update.'
+    required: false
 outputs:
   updated-body:
     description: 'The updated comment body with keywords replaced.'

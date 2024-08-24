@@ -21,12 +21,11 @@ export default class {
     this.#githubHelper = githubHelper
   }
 
-  updateComment(owner, repo, commentId, oldCommentBody) {
+  updateComment(repository, commentId, oldCommentBody) {
     const newCommentBody = this.#replacer.replace(oldCommentBody)
 
     return this.#githubHelper.updateComment(
-      owner,
-      repo,
+      repository,
       commentId,
       newCommentBody
     )

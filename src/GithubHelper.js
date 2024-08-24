@@ -4,11 +4,22 @@ import * as core from '@actions/core'
 export default class {
   #oktokit
 
+  /**
+   * @param {string} githubToken
+   */
   constructor(githubToken) {
     this.#oktokit = github.getOctokit(githubToken)
   }
 
-  async updateComment(owner, repo, commentId, commentBody) {
+  /**
+   *
+   * @param {string} repository
+   * @param {string} commentId
+   * @param {string} commentBody
+   */
+  async updateComment(repository, commentId, commentBody) {
+    const [owner, repo] = repository.split('/');
+
     await this.#oktokit.rest.issues.updateComment({
       owner,
       repo,

@@ -8,15 +8,14 @@ try {
   const language = core.getInput('language')
   const languageFile = core.getInput('language-file')
   const commentId = core.getInput('comment-id')
-  const owner = core.getInput('owner')
-  const repo = core.getInput('repo')
+  const repository = core.getInput('repository')
   const token = core.getInput('token')
 
   const replacer = new Replacer(language, languageFile)
   const githubHelper = new GithubHelper(token)
   const app = new App(replacer, githubHelper)
 
-  app.updateComment(owner, repo, commentId, commentBody)
+  app.updateComment(repository, commentId, commentBody)
 } catch (error) {
   core.setFailed(`Action failed with error ${error}`)
 }
