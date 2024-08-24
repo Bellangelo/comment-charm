@@ -1,14 +1,24 @@
 const fs = require('fs');
 
 class Replacer {
-    #language
+    #keywordsFile;
 
     constructor(language = 'en') {
-        this.#language = language;
+        this.#setKeywordsFile(language)
+    }
+
+    #setKeywordsFile(language) {
+        const path = __dirname + '/keywords/' + language + '.json';
+
+        if (!fs.existsSync(path)) {
+            throw new Error('Language not supported');
+        }
+
+        this.#keywordsFile = path;
     }
 
     #getKeywords() {
-        return JSON.parse(fs.readFileSync(__dirname + '/keywords/' + this.#language + '.json', 'utf8'));
+        return JSON.parse(fs.readFileSync(this.#keywordsFile(), 'utf8'));
     }
 
     replace(commentBody) {
