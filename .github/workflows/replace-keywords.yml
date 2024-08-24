@@ -27,6 +27,7 @@ jobs:
         uses: ./src  # This points to your custom action defined in /src
         with:
           comment-body: "${{ github.event.comment.body }}"
+          language: 'el-christmas'
 
       - name: Update the Comment
         uses: peter-evans/create-or-update-comment@v2
