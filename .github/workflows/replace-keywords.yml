@@ -6,34 +6,14 @@ on:
 
 jobs:
   replace-keywords:
-    if: github.actor != 'github-actions[bot]' # Ensure that the action isn't triggered by the bot itself.
     runs-on: ubuntu-latest
     steps:
-      - name: Replace Keywords in Comment
-        id: replace_keywords
-        run: |
-          # Extract the original comment body
-          COMMENT_BODY="${{ github.event.comment.body }}"
-
-          # Check if the comment contains the keywords :compliment: or :insult:
-          if echo "$COMMENT_BODY" | grep -qE ":compliment:|:insult:"; then
-            # Extract the original comment body with new lines intact
-            COMMENT_BODY="${{ github.event.comment.body }}"
-  
-            # Replace :compliment: and :insult: with their respective phrases
-            UPDATED_COMMENT_BODY=$(sed 's/:compliment:/[ a nice compliment ]/g' <<< "$COMMENT_BODY" | sed 's/:insult:/[ a bad insult ]/g')
-  
-            # Write the updated comment body to the environment file to preserve new lines
-            echo "$UPDATED_COMMENT_BODY" > updated_comment_body.txt
-            cat updated_comment_body.txt >> $GITHUB_ENV
-          else
-            echo "::set-output name=should_update::false"
-          fi
+      - name: Run the Node.js action to replace keywords
+        uses: ./src
 
       - name: Update the Comment
-        if: steps.replace_keywords.outputs.should_update == 'true'
         uses: peter-evans/create-or-update-comment@v2
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ github.event.comment.id }}
-          body: ${{ steps.replace_keywords.outputs.updated_body }}
-          edit-mode: replace
+          body: ${{ steps.replace-keywords.outputs.updated_body }}

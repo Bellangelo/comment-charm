@@ -1,0 +1,11 @@
+{
+  "name": "replace-keywords-action",
+  "version": "0.0.1",
+  "description": "A GitHub Action to replace :compliment: and :insult: in comments",
+  "main": "index.js",
+  "scripts": {},
+  "dependencies": {
+    "@actions/core": "^1.4.0",
+    "@actions/github": "^5.0.0"
+  }
+}
