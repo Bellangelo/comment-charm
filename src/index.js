@@ -1,5 +1,5 @@
-const core = require('@actions/core');
-const Replacer = require('./Replacer.js');
+import core from '@actions/core';
+import Replacer from './Replacer.js';
 
 try {
     const commentBody = core.getInput('comment-body');

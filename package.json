@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "description": "A GitHub Action to replace :compliment: and :insult: in comments",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest tests"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "eslint **.js"
   },
   "dependencies": {
     "@actions/core": "^1.4.0",

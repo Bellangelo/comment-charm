@@ -1,5 +1,10 @@
-const fs = require('fs');
-const Replacer = require('../src/Replacer');
+import * as fs from 'fs';
+import Replacer from '../src/Replacer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 test('Keywords in all languages can be successfully identified', () => {
     const languageFiles = fs.readdirSync(__dirname + '/../src/keywords');

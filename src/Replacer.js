@@ -1,6 +1,11 @@
-const fs = require('fs');
+import * as fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-class Replacer {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default class {
     #keywordsFile;
 
     constructor(language = 'en', languageFile = '') {
@@ -40,5 +45,3 @@ class Replacer {
         return commentBody;
     }
 }
-
-module.exports = Replacer;
