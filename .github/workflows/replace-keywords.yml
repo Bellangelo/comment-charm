@@ -23,6 +23,7 @@ jobs:
         working-directory: ./
 
       - name: Run the Node.js action to replace keywords
+        id: replace-keywords
         uses: ./src  # This points to your custom action defined in /src
         with:
           comment-body: "${{ github.event.comment.body }}"
