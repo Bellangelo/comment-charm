@@ -8,6 +8,10 @@ inputs:
     description: 'The language to use for the custom text.'
     default: 'en'
     required: false
+  language-file:
+    description: 'The file containing the custom text.'
+    default: ''
+    required: false
 outputs:
   updated-body:
     description: 'The updated comment body with keywords replaced.'

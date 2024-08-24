@@ -3,13 +3,19 @@ const fs = require('fs');
 class Replacer {
     #keywordsFile;
 
-    constructor(language = 'en') {
-        this.#setKeywordsFile(language)
+    constructor(language = 'en', languageFile = '') {
+        if (languageFile) {
+            this.#setKeywordsFile(languageFile);
+        } else {
+            this.#setKeywordsFile(this.$getLanguageFile(language));
+        }
     }
 
-    #setKeywordsFile(language) {
-        const path = __dirname + '/keywords/' + language + '.json';
+    $getLanguageFile(language) {
+        return __dirname + '/keywords/' + language + '.json';
+    }
 
+    #setKeywordsFile(path) {
         if (!fs.existsSync(path)) {
             throw new Error('Language not supported');
         }

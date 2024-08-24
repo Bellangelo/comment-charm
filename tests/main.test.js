@@ -19,3 +19,16 @@ test('Keywords in all languages can be successfully identified', () => {
 test('Invalid language throws an error', () => {
     expect(() => new Replacer('invalid')).toThrow('Language not supported');
 });
+
+test('Custom language file', () => {
+    const file = __dirname + '/data/my-custom-keywords.json';
+
+    const replacer = new Replacer('', file);
+    expect(replacer.replace(':custom-keyword:')).toMatch('Wow, this is the best answer');
+});
+
+test('Invalid custom language file throws an error', () => {
+    const file = __dirname + '/data/invalid-file.json';
+
+    expect(() => new Replacer('', file)).toThrow('Language not supported');
+});
