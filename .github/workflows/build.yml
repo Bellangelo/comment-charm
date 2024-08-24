@@ -26,9 +26,21 @@ jobs:
       - name: Run tests
         run: npm run build
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: distribution
+          path: dist
+
   update:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: distribution
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
         with:
