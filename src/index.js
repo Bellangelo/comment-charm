@@ -11,7 +11,7 @@ async function run() {
             .replace(':insult:', '[ a bad insult ]');
 
         // Set the updated body as output
-        core.setOutput('updated_body', updatedBody);
+        core.setOutput('updated-body', updatedBody);
     } catch (error) {
         core.setFailed(`Action failed with error ${error}`);
     }
