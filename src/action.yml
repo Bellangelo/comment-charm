@@ -4,6 +4,10 @@ inputs:
   comment-body:
     description: 'The body of the comment to process.'
     required: true
+  language:
+    description: 'The language to use for the custom text.'
+    default: 'en'
+    required: false
 outputs:
   updated-body:
     description: 'The updated comment body with keywords replaced.'
