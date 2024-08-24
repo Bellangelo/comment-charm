@@ -1,0 +1,31 @@
+name: 'Replace Keywords in Comments'
+description: 'Replaces :compliment: and :insult: in issue comments with custom text.'
+inputs:
+  comment-body:
+    description: 'The body of the comment to process.'
+    required: true
+  comment-id:
+    description: 'The id of the comment to update.'
+    required: true
+  language:
+    description: 'The language to use for the custom text.'
+    default: 'en'
+    required: false
+  language-file:
+    description: 'The file containing the custom text.'
+    default: ''
+    required: false
+  token:
+    description: 'GITHUB_TOKEN or a repo scoped PAT.'
+    default: ${{ github.token }}
+    required: false
+  repository:
+    description: 'The full name of the repository in which to create or update a comment.'
+    default: ${{ github.repository }}
+    required: false
+outputs:
+  updated-body:
+    description: 'The updated comment body with keywords replaced.'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
