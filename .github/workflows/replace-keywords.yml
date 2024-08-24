@@ -10,17 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20'
-
-      - name: Install Node.js dependencies
-        run: |
-          npm install
-        working-directory: ./
+        uses: actions/checkout@v4
 
       - name: Run the Node.js action to replace keywords
         id: replace-keywords
