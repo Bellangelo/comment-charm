@@ -12,6 +12,14 @@ inputs:
     description: 'The file containing the custom text.'
     default: ''
     required: false
+  token:
+    description: 'GITHUB_TOKEN or a repo scoped PAT.'
+    default: ${{ github.token }}
+  repository:
+    description: 'The full name of the repository in which to create or update a comment.'
+    default: ${{ github.repository }}
+  comment-id:
+    description: 'The id of the comment to update.'
 outputs:
   updated-body:
     description: 'The updated comment body with keywords replaced.'

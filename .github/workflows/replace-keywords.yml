@@ -27,11 +27,5 @@ jobs:
         uses: ./
         with:
           comment-body: "${{ github.event.comment.body }}"
-
-      - name: Update the Comment
-        uses: peter-evans/create-or-update-comment@v2
-        with:
           token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ github.event.comment.id }}
-          body: ${{ steps.replace-keywords.outputs.updated-body }}
-          edit-mode: replace
