@@ -1,5 +1,5 @@
-import Replacer from './Replacer'
-import GithubHelper from './GithubHelper'
+import Replacer from './Replacer.js'
+import GithubHelper from './GithubHelper.js'
 
 export default class {
   /**
