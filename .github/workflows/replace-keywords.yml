@@ -6,7 +6,7 @@ on:
 
 jobs:
   replace-keywords:
-    if: github.actor != 'github-actions[bot]' # Ensure that the action isn't triggered by the bot itself
+    if: github.actor != 'github-actions[bot]' # Ensure that the action isn't triggered by the bot itself.
     runs-on: ubuntu-latest
     steps:
       - name: Replace Keywords in Comment
