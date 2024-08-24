@@ -29,6 +29,5 @@ jobs:
         if: steps.replace_keywords.outputs.should_update == 'true'
         uses: peter-evans/create-or-update-comment@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           comment-id: ${{ github.event.comment.id }}
           body: ${{ steps.replace_keywords.outputs.updated_body }}
