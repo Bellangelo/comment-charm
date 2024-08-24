@@ -1,26 +1,10 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const fs = require('fs');
+const Replacer = require('./Replacer');
 
-async function run() {
-    try {
-        const language = 'en';
-        const keywords = JSON.parse(fs.readFileSync(__dirname + '/keywords/' + language + '.json', 'utf8'));
-
-        let commentBody = github.context.payload.comment.body;
-
-        Object.keys(keywords).forEach((key) => {
-            commentBody = commentBody.replace(new RegExp(':' + key + ':', 'g'), function (match) {
-                const items = keywords[key];
-                return items[Math.floor(Math.random()*items.length)];
-            });
-        });
-
-        // Set the updated body as output
-        core.setOutput('updated-body', commentBody);
-    } catch (error) {
-        core.setFailed(`Action failed with error ${error}`);
-    }
+try {
+    let commentBody = github.context.payload.comment.body;
+    core.setOutput('updated-body', (new Replacer()).replace(commentBody));
+} catch (error) {
+    core.setFailed(`Action failed with error ${error}`);
 }
-
-run();
