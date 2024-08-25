@@ -1,5 +1,5 @@
-name: 'Replace Keywords in Comments'
-description: 'Replaces :compliment: and :insult: in issue comments with custom text.'
+name: 'Comment Charm'
+description: 'Transform your PR comments with magical compliments and cheeky insults using GitHub Actions!'
 inputs:
   comment-body:
     description: 'The body of the comment to process.'
