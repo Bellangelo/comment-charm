@@ -46,6 +46,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: distribution
+          path: dist
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
