@@ -1,6 +1,6 @@
 {
   "name": "replace-keywords-action",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A GitHub Action to replace :compliment: and :insult: in comments",
   "author": "Aggelos Bellos",
   "main": "src/index.js",
