@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Run the Node.js action to replace keywords
-        uses: ./
+        uses: bellangelo/comment-charm@v1
         with:
           comment-body: "${{ github.event.comment.body }}"
           comment-id: ${{ github.event.comment.id }}
